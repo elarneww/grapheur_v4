@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<!-- adaptation du blog  https://www.patricksoftwareblog.com/creating-charts-with-chart-js-in-a-flask-application/ -->
+<!-- reference : https://www.chartjs.org/docs/latest/    -->
+
+<head>
+    <meta charset="utf-8" />
+    <!-- import CSS  chargé au préalable dans le folder dédié /static -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}"
+    <!-- import plugin script  chargé au préalable dans le folder dédié /static -->
+    <script src='static/Chart.min.js'></script>
+</head>
+
+<body>
+  <h2> Graphe de la fonction : f(x) = {{ cst_a }}x² + {{ cst_b }}x + {{ cst_c }} </h2>
+  <!-- bar chart canvas element -->
+  <center>
+    <!-- récupération de la taille haut/large en pixels pour le cadre du graphe -->
+    <canvas id="myChart" width={{ large }} height={{ haut }}></canvas></center>
+
+  <!-- lancement de "Charts.min.js" -->
+  <script>
+    // Global parameters:
+    // do not resize the chart canvas when its container does
+    Chart.defaults.global.responsive = false;   // maintien à false tant que le calcul X,Y n'est pas au point
+    Chart.defaults.global.maintainAspectRatio = true; // pas d'effet si precedent à false
+
+    // define the chart data
+    var chartData = {
+      labels: [{% for item in labels %}    // labels=axe_X
+    "{{item}}",
+      {% endfor %}],
+    datasets: [{
+      label: '',    // gain de place en hauteur
+      fill: false,  // pas de coloration sous la ligne
+      lineTension: 0.4,       // très important : permet de lisser la courbe (bezier par point)
+      backgroundColor: "rgba(75,192,192,0.4)",
+      borderColor: "rgba(75,192,192,1)",
+      borderCapStyle: 'butt',
+      borderDash: [],
+      borderDashOffset: 0.0,
+      borderJoinStyle: 'miter',
+      pointBorderColor: "rgba(75,192,192,1)",
+      pointBackgroundColor: "#fff",
+      pointBorderWidth: 1,
+      pointHoverRadius: 5,
+      pointHoverBackgroundColor: "rgba(75,192,192,1)",
+      pointHoverBorderColor: "rgba(220,220,220,1)",
+      pointHoverBorderWidth: 2,
+      pointRadius: 1,    // fait disparaitre les points
+      pointHitRadius: 10,
+      data: [{% for item in values %}   // values=axe_Y
+                      {{ item }},
+    {% endfor %}],
+      spanGaps: false
+        }]
+      }
+
+    // get chart canvas
+    var holder = document.getElementById("myChart");
+    var ctx = document.getElementById("myChart").getContext("2d");
+
+    // create the chart using the chart canvas
+    var myChart = new Chart(ctx, {
+      type: 'line',
+      data: chartData,
+      options: {
+        fill: false,
+        scales: {
+            xAxes: [{
+                type: 'linear',
+                ticks: {
+                    fontSize: 6 // ne fonctionne pas...
+                }
+            }]
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    fontSize : 10
+                }
+            }]
+        },
+        tooltips: {
+          enabled: true,
+          mode: 'single',
+          callbacks: {
+            label: function (tooltipItems, data) {
+              return tooltipItems.yLabel + ' Y';
+            }
+          }
+        },
+      }
+    });
+
+  </script>
+
+  <h2> Selectionnez un point sur la courbe pour obtenir X et Y </h2>
+  <h2><a href="{{ url_for('acceuil') }}"> retourner à la page d'accueil </a></h2>
+  </center>
+</body>
+
+</html>

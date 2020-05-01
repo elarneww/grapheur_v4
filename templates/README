@@ -1,0 +1,20 @@
+Page 'graphe.html' : affihchage de la courbe
+
+La page 'graphe.html' qui fait appel au "render_templates" de Flask
+stocké (comme Flask l'oblige) dans le dossier /templates
+
+Recoit les paramètres (venant de la page (acceuil.html) suivants:
+values=axe_Y : liste des valeres de X
+labels=axe_X : liste des valaures d f(x)
+cst_a=cst_a  : constate a
+cst_b=cst_b  : constate b
+cst_c=cst_c  : constate c
+haut=haut    : hauteur du cadre d'affichage en pixels
+large=large  : largeur du cadre d'affichage en pixels
+
+
+La page 'graphe.html' contient l'appel au JavaScript "Chart.min.js"
+stocké (comme Flask l'oblige) dans le dossier /static
+par l'instruction : <script src='static/Chart.min.js'></script>
+
+La fonction Callback est partiellement utilisée.
