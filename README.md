@@ -20,6 +20,9 @@ Réalisée à l'aide du JavaScript "Charts.js'
 https://isn2src.pythonanywhere.com
 
 
+## Documentation :
+
+Consulter la page Wiki.
 
 
 ### ---------------------------------------------------------------------
