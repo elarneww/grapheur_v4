@@ -22,18 +22,18 @@ https://isn2src.pythonanywhere.com
 
 ## Documentation :
 
-Consulter la page Wiki.
+Consulter le repository "Documentation'
 
 
 ### ---------------------------------------------------------------------
 
 #### ANNEXE : Tests sur fonctions prédéfinies:
 
-https://etagere.pythonanywhere.com/graphe?cst_a=1.0&cst_b=1.0&cst_c=1.0
+https://isn2src.pythonanywhere.com/graphe?cst_a=1.0&cst_b=1.0&cst_c=1.0
 
-https://etagere.pythonanywhere.com/graphe?cst_a=0.1&cst_b=0.1&cst_c=1.0
+https://isn2src.pythonanywhere.com/graphe?cst_a=0.1&cst_b=0.1&cst_c=1.0
 
-https://etagere.pythonanywhere.com/graphe?cst_a=-0.1&cst_b=-0.1&cst_c=0.0
+https://isn2src.pythonanywhere.com/graphe?cst_a=-0.1&cst_b=-0.1&cst_c=0.0
 
-https://etagere.pythonanywhere.com/graphe?cst_a=0.0&cst_b=0.0&cst_c=0.0
+https://isn2src.pythonanywhere.com/graphe?cst_a=0.0&cst_b=0.0&cst_c=0.0
 
