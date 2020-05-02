@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en">
-<!-- adaptation du blog  https://www.patricksoftwareblog.com/creating-charts-with-chart-js-in-a-flask-application/ -->
 <!-- reference : https://www.chartjs.org/docs/latest/    -->
 
 <head>
@@ -13,7 +12,7 @@
 
 <body>
   <h2> Graphe de la fonction : f(x) = {{ cst_a }}x² + {{ cst_b }}x + {{ cst_c }} </h2>
-  <!-- bar chart canvas element -->
+  <!-- bar chart canvas element = cadre d'affichage du graphe -->
   <center>
     <!-- récupération de la taille haut/large en pixels pour le cadre du graphe -->
     <canvas id="myChart" width={{ large }} height={{ haut }}></canvas></center>
@@ -31,9 +30,9 @@
     "{{item}}",
       {% endfor %}],
     datasets: [{
-      label: '',    // gain de place en hauteur
-      fill: false,  // pas de coloration sous la ligne
-      lineTension: 0.4,       // très important : permet de lisser la courbe (bezier par point)
+      label: '{{ fonction2nd }}',  // recuperation de la fonction "en texte"
+      fill: false,                 // pas de coloration sous la ligne
+      lineTension: 0.4,            // très important : permet de lisser la courbe (bezier par point)
       backgroundColor: "rgba(75,192,192,0.4)",
       borderColor: "rgba(75,192,192,1)",
       borderCapStyle: 'butt',
@@ -77,7 +76,7 @@
         scales: {
             yAxes: [{
                 ticks: {
-                    fontSize : 10
+                    fontSize : 10  // fonctionne
                 }
             }]
         },

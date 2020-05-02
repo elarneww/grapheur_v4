@@ -13,7 +13,6 @@ app.config["DEBUG"] = True
 # dans notre cas il s'agit de "https://isn2src.pythonanywhere.com/" et de la fonction acceuil()
 @app.route("/", methods=["GET", "POST"])
 def acceuil():
-    # adaptation du blog  https://blog.pythonanywhere.com/169/
     # recuperation des saisies par POST HTML
     errors = ""
     # teste indefiniment si les saisies sont des nombres :
@@ -39,7 +38,7 @@ def acceuil():
         if cst_a is not None and cst_b is not None and cst_c is not None:
             # toutes les saisies sont correctes : je redirige vers la page du graphe
             # en construisant l'URL suivie des valeurs des constantes a, b et c
-            # cela donne par exmple : https://isn2src.pythonanywhere.com/graphe?cst_a=3&cst_b=2&cst_c=-10
+            # cela donne par exemple : https://isn2src.pythonanywhere.com/graphe?cst_a=3&cst_b=2&cst_c=-10
             return redirect(url_for('graphe', cst_a=cst_a, cst_b=cst_b,cst_c=cst_c) )
 
     # page de saisie des constantes a, b et c
@@ -90,15 +89,16 @@ def graphe():
             point = (float(cst_a)*float(val)*float(val))+(float(cst_b)*float(val))+float(cst_c)
             axe_Y.append(point)
     else:
+        # toutes les constantes sont à 0 => il n'y a pas de fonction
         # probleme documentation : ni 'null' ni 'NaN' destinées à "sauter" un point
         # ne fonctionnent, donc choix de mettre une ligne à 0...
         axe_Y = [0,  0,  0,  0,  0,  0,  0,  0,
               0,  0,  0,  0, 0,  0,  0,  0,  0,  0,  0,  0,  0]
 
     # ************** Dimension en pixels du cadre recevant la courbe *****************
-    # après une tentative de plugin zoom sur charts.js... qui ne répond pas au probleme
-    # https://stackoverflow.com/questions/40086575/chart-js-draw-mathematical-function
-    # Donc obtenir une indication des valeurs min et max de f(x) puis un ratio
+    # après une installation du plugin zoom sur charts.js... qui ne répond pas au probleme
+    # ( voir https://stackoverflow.com/questions/40086575/chart-js-draw-mathematical-function )
+    # Il s'agit d'obtenir une indication des valeurs min et max de f(x) puis un ratio
     # de telle sorte à agir sur la hauteur/largeur du cadre (ratio_canvas) graphe affiché
     # pour que la représentation de la courbe soit la plus réaliste possible
     if (cst_a == "0")  and (cst_b == "0") :
@@ -124,10 +124,14 @@ def graphe():
         large= "400"
     # ******* NOTE : Impossible d'isoler le traitement ci-dessus dans un programe séparé "courbe.py"  *******
 
+    # expression texte de la fonction avec les constantes siasies
+    # destinée à être améliorée pour supprimer les "+" lorsque les constantes sont négatives
+    fonction2nd = 'f(x) = ' + str(cst_a) + 'x² + ' + str(cst_b) + 'x + ' + str(cst_c)
+
     # render_template() : affichage de la page HTML "graphe.html" qui contient des variables et instructions Flask
     # c'est ce qui est appellé de "...l'HTML altéré..." à cause de la présence de ces variables {{...}}
     # toutes les pages .html doivent se situer dans le répertoire nommé /templates
-    return render_template('graphe.html', values=axe_Y, labels=axe_X, cst_a=cst_a, cst_b=cst_b, cst_c=cst_c, haut=haut, large=large)
+    return render_template('graphe.html', values=axe_Y, labels=axe_X, cst_a=cst_a, cst_b=cst_b, cst_c=cst_c, haut=haut, large=large, fonction2nd=fonction2nd)
 
 if __name__ == '__main__':
     app.run()
