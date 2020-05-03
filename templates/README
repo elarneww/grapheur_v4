@@ -5,7 +5,7 @@ stocké (comme Flask l'oblige) dans le dossier /templates
 
 Recoit les paramètres (venant de la page (acceuil.html) suivants:
 values=axe_Y : liste des valeres de X
-labels=axe_X : liste des valaures d f(x)
+labels=axe_X : liste des valaurs de f(x)
 cst_a=cst_a  : constate a
 cst_b=cst_b  : constate b
 cst_c=cst_c  : constate c
