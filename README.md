@@ -25,15 +25,4 @@ https://isn2src.pythonanywhere.com
 Consulter le repository "Documentation'
 
 
-### ---------------------------------------------------------------------
-
-#### ANNEXE : Tests sur fonctions prédéfinies:
-
-https://isn2src.pythonanywhere.com/graphe?cst_a=1.0&cst_b=1.0&cst_c=1.0
-
-https://isn2src.pythonanywhere.com/graphe?cst_a=0.1&cst_b=0.1&cst_c=1.0
-
-https://isn2src.pythonanywhere.com/graphe?cst_a=-0.1&cst_b=-0.1&cst_c=0.0
-
-https://isn2src.pythonanywhere.com/graphe?cst_a=0.0&cst_b=0.0&cst_c=0.0
 
