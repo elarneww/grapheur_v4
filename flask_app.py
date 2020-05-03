@@ -104,8 +104,9 @@ def graphe():
     if (cst_a == "0")  and (cst_b == "0") :
         ratio_canvas = 1
     else:
-        delta_Y = abs(max(axe_Y)) + abs(min(axe_Y))
-        ratio_canvas = delta_Y/40
+        delta_Y = abs(max(axe_Y)) + abs(min(axe_Y))   # différence valeurs min et max de Y
+        delta_X = abs(max(axe_X)) + abs(min(axe_X))   # différence valeurs min et max de X
+        ratio_canvas = delta_Y/delta_X                # ratio hauteur largeur
 
     # reglage des dimensions "haut" "large" du cadre affiché dans la page "graphe.html"
     # la hauteur est choisie en pixels :
@@ -114,8 +115,8 @@ def graphe():
     # en limitant les valeurs extremes et évitant toutes les constantes à 0
     if (not (ratio_canvas == 0)):
         large_value = int(haut)/ratio_canvas
-        if large_value > 1500:
-            large = "1500"
+        if large_value > 1200:
+            large = "1200"
         else:
             large = str(large_value)
             if large_value < 400:
