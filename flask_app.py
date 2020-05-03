@@ -115,8 +115,8 @@ def graphe():
     # en limitant les valeurs extremes et évitant toutes les constantes à 0
     if (not (ratio_canvas == 0)):
         large_value = int(haut)/ratio_canvas
-        if large_value > 1200:
-            large = "1200"
+        if large_value > 1000:
+            large = "1000"
         else:
             large = str(large_value)
             if large_value < 400:
