@@ -119,8 +119,8 @@ def graphe():
             large = "1200"
         else:
             large = str(large_value)
-            if large_value < 200:
-                large= "200"
+            if large_value < 400:
+                large= "400"
     else:
         large= "400"
     # ******* NOTE : Impossible d'isoler le traitement ci-dessus dans un programe séparé "courbe.py"  *******
