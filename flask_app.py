@@ -126,8 +126,17 @@ def graphe():
     # ******* NOTE : Impossible d'isoler le traitement ci-dessus dans un programe séparé "courbe.py"  *******
 
     # expression texte de la fonction avec les constantes siasies
-    # destinée à être améliorée pour supprimer les "+" lorsque les constantes sont négatives
-    fonction2nd = 'f(x) = ' + str(cst_a) + 'x² + ' + str(cst_b) + 'x + ' + str(cst_c)
+    # améliorée pour supprimer les "+" lorsque les constantes sont négatives
+    fonction2nd =  "f(x) = " + cst_a + "x²"
+    if float(cst_b) <0:
+        fonction2nd =  fonction2nd + " " + cst_b + "x"
+    else:
+        fonction2nd =  fonction2nd + " +" + cst_b + "x"
+
+    if float(cst_c) <0:
+        fonction2nd =  fonction2nd + " " + cst_c
+    else:
+        fonction2nd =  fonction2nd + " +" + cst_c
 
     # render_template() : affichage de la page HTML "graphe.html" qui contient des variables et instructions Flask
     # c'est ce qui est appellé de "...l'HTML altéré..." à cause de la présence de ces variables {{...}}
